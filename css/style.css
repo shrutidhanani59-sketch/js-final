@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+section
+{
+  margin-top: 20px;
+}
+section div
+{
+      display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 20px;
+}
+
+div img
+{
+    height: 250px;
+    width: 250px;
+    border-radius: 5px;
+}
+
+main
+{
+    background-color: white;
+    padding: 5px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px gray;
+     transition: .2s;
+}
+main:hover
+{
+    transform: translateY(-5px);
+}
+
+main p
+{
+    font-size: 12px;
+}
+
+h2
+{
+    margin-left: 20px;
+}
+button
+{
+    background-color: orange;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+}
+nav
+{
+    padding: 20px;
+    box-shadow:1px 1px 2px gray ;
+    display: flex;
+    justify-content: space-between ;
+}
+.logo img{
+    width: 120px;
+    height: 50px;
+}
+.search
+{
+    margin-top: 15px;
+}
+
+input
+{
+    background-color: whitesmoke;
+    border: none;
+    padding: 6px;
+    border-radius: 10px;   
+}
+input:focus{
+    outline: none;
+}
+.icon
+{
+    margin-top: 15px;
+}
+.main img
+{
+    height: 85vh;
+    width: 100%;
+}
