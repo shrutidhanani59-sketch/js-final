@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+        integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    
-   <nav>
-    <div class="logo">
-        <img src="imges/logo.png" alt="">
-    </div>
 
-    <div class="search">
-        <input type="text" placeholder="Search " >
-        
-    </div>
+    <nav>
+        <div class="logo">
+            <img src="imges/logo.png" alt="">
+        </div>
 
-    <div class="icon">
-        <button class="add">Add Data</button>
-        <button class="Remove">Remove Data</button>
-    </div>
-   </nav>
+        <div class="search">
+            <datalist id="lists">
+                <option>Price Low to High</option>
+                <option>Price High to Low</option>
+            </datalist>
+            <input type="text" placeholder="Search" list="lists">
 
-   <div class="main">
-    <img src="imges/main.png" alt="">
-   </div>
+        </div>
+       
+        <div class="icon">
+            <button class="add">Add Data</button>
+            <button class="Remove">Remove Data</button>
+        </div>
+    </nav>
+
+    <div class="main">
+        <img src="imges/main.png" alt="">
+    </div>
     <article>
-        
+
     </article>
     <script src="javaScript/script.js"></script>
 </body>
+
 </html>

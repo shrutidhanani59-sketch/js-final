@@ -323,55 +323,96 @@ let addproductToList = {
 console.log(localStorage);
 localStorage.setItem("addproductToList", JSON.stringify(addproductToList));
 
-const data = JSON.parse(localStorage.getItem("addproductToList"));
+function getgata(parameter = localStorage.getItem('myparameter')) {
 
-for (const key in data) {
-    let section = document.createElement('section');
-    let h2 = document.createElement('h2');
+    document.querySelector('input').value = parameter;
+    // document.querySelector(".box").innerText = JSON.parse(localStorage.getItem("cartproducts")).length;
+    const filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
 
-    h2.append(key);
-    section.append(h2);
-    console.log(section);
+    if (parameter == "price Low to High") {
+        for (const key in filterproduct) {
+            filterproduct[key].sort((a, b) => {
+                return a.price - b.price;
+            });
+        }
 
-    let div = document.createElement('div');
+    }
+    else if (parameter == "price High to Low") {
+        for (const key in filterproduct) {
+            filterproduct[key].sort((a, b) => {
+                return b.price - a.price;
+            });
+        }
 
-    for (const element of data[key]) {
+    } else if (parameter == " ") {
 
-        let main = document.createElement('main');
+    }
+    else {
+        for (const key in filterproduct) {
+            filterproduct[key] = filterproduct[key].filter((data) => {
+                return data.company.toLowerCase().includes(parameter.toLowerCase());
 
-        let h3 = document.createElement('h3');
-        let h4 = document.createElement('h4');
-        let img = document.createElement('img');
-        let h5 = document.createElement('h5');
-        let p = document.createElement('p');
-        let star = document.createElement('p');
-        let button = document.createElement('button');
-
-        h3.append(element.company);
-        h4.append(element.model);
-        h5.append(element.price);
-        img.src = element.img;
-        p.append(element.description);
-        star.append(element.star);
-        button.innerHTML = "Add cart";
-
-        main.appendChild(h3);
-        main.appendChild(img);
-        main.appendChild(h4);
-        main.appendChild(p);
-        main.appendChild(star);
-        main.appendChild(button);
-
-        div.appendChild(main);
+            });
+        }
+        console.log(filterproduct);
     }
 
-    section.appendChild(div);
-    document.querySelector("article").appendChild(section);
+    const data = filterproduct;
+  
+    for (const key in data) {
+        let section = document.createElement('section');
+        let h2 = document.createElement('h2');
+
+        h2.append(key);
+        section.append(h2);
+        console.log(section);
+
+        let div = document.createElement('div');
+
+        for (const element of data[key]) {
+
+            let main = document.createElement('main');
+
+            let h3 = document.createElement('h3');
+            let h4 = document.createElement('h4');
+            let img = document.createElement('img');
+            let p = document.createElement('p');
+            let h5 = document.createElement('h5');
+            let star = document.createElement('p');
+            let button = document.createElement('button');
+
+            h3.append(element.company);
+            h4.append(element.model);
+            h5.append(element.price);
+            img.src = element.img;
+            star.append(element.star);
+            p.append(element.description);
+            
+            button.innerHTML = "Add cart";
+
+            main.appendChild(h3);
+            main.appendChild(img);
+            main.appendChild(h4);
+            main.appendChild(h5);
+            main.appendChild(p);
+            main.appendChild(star);
+            main.appendChild(button);
+
+            div.appendChild(main);
+        }
+
+        section.appendChild(div);
+        document.querySelector("article").appendChild(section);
+
+    }
 
 }
 
-
-    document.querySelector(".add").onclick = function () {
+ document.querySelector('input').onchange = function (e) {
+        localStorage.setItem("myparameter", e.target.value);
+        location.href = "index.html";
+    }
+document.querySelector(".add").onclick = function () {
 
     let company = prompt("Enter Company Name");
     let model = prompt("Enter Product Name");
@@ -379,5 +420,4 @@ for (const key in data) {
     let image = prompt("Enter Image Path");
 
 }
-
-
+getgata();
