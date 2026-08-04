@@ -43,15 +43,14 @@ This is a  E-Commerce website built using HTML, CSS, and JavaScript. Add product
 Home Page
 ![Project Screenshot](imges/screenshort1.png)
 
-
 Product Page
 ![Project Screenshot](imges/screenshort2.png)
 
-Price Low to High
-![Project Screenshot](imges/screenshort3.png)
-
 Add product
 ![Project Screenshot](imges/screenshort4.png)
+
+Price Low to High
+![Project Screenshot](imges/screenshort3.png)
 
 Price High to Low
 ![Project Screenshot](imges/screenshort5.png)
