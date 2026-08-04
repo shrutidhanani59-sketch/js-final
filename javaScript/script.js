@@ -120,7 +120,7 @@ let addproductToList = {
             company: "Adidas",
             model: "Men's Sports T-Shirt",
             img: "imges/M-cloth2.jpg",
-            price: 1599,
+            price: 1299,
             description: "Breathable sports T-shirt designed for daily wear and workouts.",
             star: "⭐⭐⭐⭐",
         },
@@ -128,7 +128,7 @@ let addproductToList = {
             company: "Puma",
             model: "Men's Graphic T-Shirt",
             img: "imges/M-cloth3.jpg",
-            price: 1599,
+            price: 199,
             description: "Stylish graphic print T-shirt made from soft cotton fabric.",
             star: "⭐⭐⭐⭐",
         },
@@ -136,7 +136,7 @@ let addproductToList = {
             company: "Levi's",
             model: "Men's Casual T-Shirt",
             img: "imges/M-cloth4.jpg",
-            price: 1599,
+            price: 299,
             description: "Classic casual T-shirt with a modern fit for everyday use.",
             star: "⭐⭐⭐⭐",
         }
@@ -175,6 +175,41 @@ let addproductToList = {
             description: "Compact Bluetooth speaker with rich sound, deep bass, and multiple connectivity options.",
             star: "⭐⭐⭐⭐",
         }
+    ],
+
+    Shoes: [
+        {
+        company: "Nike",
+        model: "Air Max Running Shoes",
+        img: "imges/shoes1.jpg",
+        price: 3499,
+        description: "Lightweight running shoes with breathable mesh and cushioned sole.",
+        star: "⭐⭐⭐⭐",
+    },
+        {
+        company: "Adidas",
+        model: "Ultraboost Sneakers",
+        img: "imges/shoes2.jpg",
+        price: 4299,
+        description: "Premium sneakers designed for maximum comfort and everyday wear.",
+        star: "⭐⭐⭐⭐",
+    },
+    {
+        company: "Puma",
+        model: "Smash V2 Casual Shoes",
+        img: "imges/shoes3.jpg",
+        price: 2999,
+        description: "Stylish casual shoes with durable rubber sole and modern design.",
+        star: "⭐⭐⭐⭐",
+    },
+    {
+        company: "Reebok",
+        model: "Classic Leather Shoes",
+        img: "imges/shoes4.jpg",
+        price: 3899,
+        description: "Classic leather shoes offering superior comfort and long-lasting quality.",
+        star: "⭐⭐⭐⭐",
+    }
     ],
 
     Mobile: [
@@ -326,10 +361,8 @@ localStorage.setItem("addproductToList", JSON.stringify(addproductToList));
 function getgata(parameter = localStorage.getItem('myparameter')) {
 
     document.querySelector('input').value = parameter;
-    // document.querySelector(".box").innerText = JSON.parse(localStorage.getItem("cartproducts")).length;
     const filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
-
-    if (parameter == "price Low to High") {
+    if (parameter == "Price Low to High") {
         for (const key in filterproduct) {
             filterproduct[key].sort((a, b) => {
                 return a.price - b.price;
@@ -337,28 +370,28 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
         }
 
     }
-    else if (parameter == "price High to Low") {
+    else if (parameter == "Price High to Low") {
         for (const key in filterproduct) {
             filterproduct[key].sort((a, b) => {
                 return b.price - a.price;
             });
         }
 
-    } else if (parameter == " ") {
-
+    } else if(parameter == "")
+    {
+       
     }
     else {
         for (const key in filterproduct) {
             filterproduct[key] = filterproduct[key].filter((data) => {
                 return data.company.toLowerCase().includes(parameter.toLowerCase());
-
+                
             });
         }
-        console.log(filterproduct);
     }
 
     const data = filterproduct;
-  
+
     for (const key in data) {
         let section = document.createElement('section');
         let h2 = document.createElement('h2');
@@ -380,6 +413,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             let h5 = document.createElement('h5');
             let star = document.createElement('p');
             let button = document.createElement('button');
+            let button2 = document.createElement('button2');
 
             h3.append(element.company);
             h4.append(element.model);
@@ -387,8 +421,9 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             img.src = element.img;
             star.append(element.star);
             p.append(element.description);
-            
-            button.innerHTML = "Add cart";
+
+            button.innerHTML = "Editing";
+            button2.innerHTML = "Delet";
 
             main.appendChild(h3);
             main.appendChild(img);
@@ -397,6 +432,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             main.appendChild(p);
             main.appendChild(star);
             main.appendChild(button);
+            main.appendChild(button2);
 
             div.appendChild(main);
         }
@@ -408,10 +444,12 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
 
 }
 
- document.querySelector('input').onchange = function (e) {
-        localStorage.setItem("myparameter", e.target.value);
-        location.href = "index.html";
-    }
+document.querySelector('input').onchange = function (e) {
+    localStorage.setItem("myparameter", e.target.value);
+    location.reload();
+}
+
+
 document.querySelector(".add").onclick = function () {
 
     let company = prompt("Enter Company Name");
@@ -419,5 +457,14 @@ document.querySelector(".add").onclick = function () {
     let price = prompt("Enter Price");
     let image = prompt("Enter Image Path");
 
-}
+    let newdata = {
+        company:company , model:model , price:price , img:image , description:"New Product" , star:"⭐⭐⭐⭐"
+    };
+
+    let data = JSON.parse(localStorage.getItem("addproductToList"));
+      data["New Product"] = [newdata];
+    localStorage.setItem("addproductToList", JSON.stringify(data));
+      location.reload();
+
+};
 getgata();
