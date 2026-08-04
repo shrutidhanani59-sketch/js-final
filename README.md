@@ -41,7 +41,7 @@ This is a  E-Commerce website built using HTML, CSS, and JavaScript. Add product
 
 ## 📸 Screenshot
 Home Page
-![Project Screenshot](imges/screenshort1.png)
+
 
 Product Page
 ![Project Screenshot](imges/screenshort2.png)
