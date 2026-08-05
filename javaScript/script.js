@@ -1,5 +1,4 @@
-// let addproductToList = {
-//     Women: [
+// let addproductToList = [
 //         {
 //             company: "Zara",
 //             model: "Women's Casual Kurti",
@@ -34,10 +33,8 @@
 //             price: 1599,
 //             description: "Elegant formal shirt suitable for office wear.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     Bangles: [
 //         {
 //             company: "Shining",
 //             model: "Gold Plated Bangles",
@@ -69,10 +66,8 @@
 //             price: 299,
 //             description: "Lightweight and colorful plastic bangles suitable for everyday and casual wear.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     Fashwash: [
 //         {
 //             company: "Cetaphil",
 //             model: "Gentle Skin Cleanser",
@@ -104,10 +99,8 @@
 //             price: 399,
 //             description: "Hydrating face wash that cleanses without stripping the skin's natural moisture.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     Men: [
 //         {
 //             company: "Nike",
 //             model: "Men's Cotton T-Shirt",
@@ -139,10 +132,8 @@
 //             price: 299,
 //             description: "Classic casual T-shirt with a modern fit for everyday use.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     Headphone: [
 //         {
 //             company: "JBL",
 //             model: "Flip 6 Bluetooth Speaker",
@@ -174,10 +165,8 @@
 //             price: 3499,
 //             description: "Compact Bluetooth speaker with rich sound, deep bass, and multiple connectivity options.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     Shoes: [
 //         {
 //         company: "Nike",
 //         model: "Air Max Running Shoes",
@@ -209,10 +198,8 @@
 //         price: 3899,
 //         description: "Classic leather shoes offering superior comfort and long-lasting quality.",
 //         star: "⭐⭐⭐⭐",
-//     }
-//     ],
+//     },
 
-//     Mobile: [
 //         {
 //             company: "Apple",
 //             model: "iPhone 13",
@@ -244,10 +231,8 @@
 //             price: 37999,
 //             description: "Stylish 5G smartphone with an AMOLED display, excellent cameras, and long battery life.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     Leptop: [
 //         {
 //             company: "Apple",
 //             model: "MacBook Air M4",
@@ -279,10 +264,8 @@
 //             price: 62999,
 //             description: "Slim and powerful laptop featuring a Full HD display and long battery life.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     Refrigerators: [
 //         {
 //             company: "Samsung",
 //             model: "253L Double Door Refrigerator",
@@ -314,10 +297,8 @@
 //             price: 32999,
 //             description: "Large-capacity refrigerator with inverter compressor, fast cooling, and low power consumption.",
 //             star: "⭐⭐⭐⭐",
-//         }
-//     ],
+//         },
 
-//     AC: [
 //         {
 //             company: "Daikin",
 //             model: "1.5 Ton Inverter Split AC",
@@ -350,15 +331,13 @@
 //             description: "High-performance inverter split AC with fast cooling, energy-efficient operation, and low noise.",
 //             star: "⭐⭐⭐⭐",
 //         },
-//     ],
 
 
-// }
+// ]
 
 // console.log(localStorage);
 // localStorage.setItem("addproductToList", JSON.stringify(addproductToList));
 
-// document.querySelector("article").innerHTML = "";
 function getgata(parameter = localStorage.getItem('myparameter')) {
 
     document.querySelector('input').value = parameter;
@@ -378,76 +357,94 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             });
         }
 
-    } else if(parameter == "")
-    {
-       
+    } else if (parameter == "") {
+
     }
     else {
         for (const key in filterproduct) {
             filterproduct[key] = filterproduct[key].filter((data) => {
                 return data.company.toLowerCase().includes(parameter.toLowerCase());
-                
+
             });
         }
     }
 
     const data = filterproduct;
+    let section = document.createElement('section');
+    let h2 = document.createElement('h2');
 
-    for (const key in data) {
-        let section = document.createElement('section');
-        let h2 = document.createElement('h2');
+    let div = document.createElement('div');
 
-        h2.append(key);
-        section.append(h2);
-        console.log(section);
+    for (const element of data) {
 
-        let div = document.createElement('div');
+        let main = document.createElement('main');
 
-        for (const element of data[key]) {
+        let h3 = document.createElement('h3');
+        let h4 = document.createElement('h4');
+        let img = document.createElement('img');
+        let p = document.createElement('p');
+        let h5 = document.createElement('h5');
+        let star = document.createElement('p');
+        let button1 = document.createElement('button');
+        let button2 = document.createElement('button');
 
-            let main = document.createElement('main');
-
-            let h3 = document.createElement('h3');
-            let h4 = document.createElement('h4');
-            let img = document.createElement('img');
-            let p = document.createElement('p');
-            let h5 = document.createElement('h5');
-            let star = document.createElement('p');
-            let button1 = document.createElement('button');
-            let button2 = document.createElement('button');
-
-            h3.append(element.company);
-            h4.append(element.model);
-            h5.append(element.price);
-            img.src = element.img;
-            star.append(element.star);
-            p.append(element.description);
+        h3.append(element.company);
+        h4.append(element.model);
+        h5.append(element.price);
+        img.src = element.img;
+        star.append(element.star);
+        p.append(element.description);
 
 
-button1.className = "editBtn";
-button2.className = "deleteBtn";
+        button1.className = "editBtn";
+        button2.className = "deleteBtn";
 
-            button1.innerHTML = "Editing";
-            button2.innerHTML = "Delet";
+        button1.innerHTML = "Editing";
+        button2.innerHTML = "Delet";
 
-            main.appendChild(h3);
-            main.appendChild(img);
-            main.appendChild(h4);
-            main.appendChild(h5);
-            main.appendChild(p);
-            main.appendChild(star);
-            main.appendChild(button1);
-            main.appendChild(button2);
+        main.appendChild(h3);
+        main.appendChild(img);
+        main.appendChild(h4);
+        main.appendChild(h5);
+        main.appendChild(p);
+        main.appendChild(star);
+        main.appendChild(button1);
+        main.appendChild(button2);
 
-            div.appendChild(main);
-        }
+        div.appendChild(main);
 
-        section.appendChild(div);
-        document.querySelector("article").appendChild(section);
+       button1.onclick = function () {
+
+    let updatecompany = prompt("Enter Company Name");
+    let updatemodel = prompt("Enter Product Name");
+    let updateprice = prompt("Enter Price");
+    let updateimage = prompt("Enter Image Path");
+
+    let allData = JSON.parse(localStorage.getItem("addproductToList"));
+
+    allData[category][index] = {
+        company: updatecompany,
+        model: updatemodel,
+        price: Number(updateprice),
+        img: updateimage,
+        description: element.description,
+        star: element.star
+    };
+
+    localStorage.setItem("addproductToList", JSON.stringify(allData));
+
+    location.reload();
+};
 
     }
 
+    section.appendChild(div);
+    document.querySelector("article").appendChild(section);
+
+
 }
+
+
 
 document.querySelector('input').onchange = function (e) {
     localStorage.setItem("myparameter", e.target.value);
@@ -463,20 +460,16 @@ document.querySelector(".add").onclick = function () {
     let image = prompt("Enter Image Path");
 
     let newdata = {
-        company:company , model:model , price:price , img:image , description:"New Product" , star:"⭐⭐⭐⭐"
+        company: company, model: model, price: price, img: image, description: "New Product", star: "⭐⭐⭐⭐"
     };
 
     let data = JSON.parse(localStorage.getItem("addproductToList"));
-      data["New Product"].push(newdata);
+    data.push(newdata);
     localStorage.setItem("addproductToList", JSON.stringify(data));
     console.log(data);
-    
-      location.reload();
 
-};
+    location.reload();
 
-document.querySelectorAll(".editBtn").onclick = function () {
-    console.log("Edit Click");
 };
 
 getgata();

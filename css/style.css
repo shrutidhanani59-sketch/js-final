@@ -11,7 +11,7 @@ section
 section div
 {
       display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
     gap: 5px;
     padding: 20px;
 }
@@ -19,14 +19,13 @@ section div
 div img
 {
     height: 250px;
-    width: 250px;
+    width: 100%;
     border-radius: 5px;
 }
 
 main
 {
     background-color: white;
-    /* border: 1px solid black; */
     padding: 5px;
     border-radius: 15px;
     box-shadow: 1px 2px 2px rgb(184, 177, 177);
