@@ -343,32 +343,31 @@
 function getgata(parameter = localStorage.getItem('myparameter')) {
 
     document.querySelector('input').value = parameter;
-    const filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
+    let filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
     if (parameter == "Price Low to High") {
-        for (const key in filterproduct) {
-            filterproduct[key].sort((a, b) => {
+       
+            filterproduct.sort((a, b) => {
                 return a.price - b.price;
             });
-        }
 
     }
     else if (parameter == "Price High to Low") {
-        for (const key in filterproduct) {
-            filterproduct[key].sort((a, b) => {
+        
+            filterproduct.sort((a, b) => {
                 return b.price - a.price;
             });
-        }
+      
 
     } else if (parameter == "") {
 
     }
     else {
-        for (const key in filterproduct) {
-            filterproduct[key] = filterproduct[key].filter((data) => {
+       
+            filterproduct = filterproduct.filter((data) => {
                 return data.company.toLowerCase().includes(parameter.toLowerCase());
 
             });
-        }
+        
     }
 
     const data = filterproduct;
@@ -416,52 +415,55 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
 
         div.appendChild(main);
 
-       let index = data.indexOf(element);
+        button1.onclick = function () {
 
-button1.onclick = function () {
+            let allData = JSON.parse(localStorage.getItem("addproductToList"));
 
-    let allData = JSON.parse(localStorage.getItem("addproductToList"));
+            let updatecompany = prompt("Enter Company Name", element.company);
+            let updatemodel = prompt("Enter Product Name", element.model);
+            let updateprice = prompt("Enter Price", element.price);
+            let updateimage = prompt("Enter Image Path", element.img);
 
-    let updatecompany = prompt("Enter Company Name", element.company);
-    let updatemodel = prompt("Enter Product Name", element.model);
-    let updateprice = prompt("Enter Price", element.price);
-    let updateimage = prompt("Enter Image Path", element.img);
+            allData[category] = allData[category].map((item, i) => {
+                if (i === index) {
+                    return {
+                        company: updatecompany,
+                        model: updatemodel,
+                        price: Number(updateprice),
+                        img: updateimage,
+                        description: item.description,
+                        star: item.star
+                    };
+                }
+                return item;
+            });
 
-    allData[index] = {
-        company: updatecompany,
-        model: updatemodel,
-        price: Number(updateprice),
-        img: updateimage,
-        description: element.description,
-        star: element.star
-    };
+            localStorage.setItem("addproductToList", JSON.stringify(allData));
 
-    localStorage.setItem("addproductToList", JSON.stringify(allData));
-
-    location.reload();
-};
+            location.reload();
+        };
 
 
         button2.onclick = function () {
 
-    let deletecompany = prompt("Enter Company Name");
-    let deletemodel = prompt("Enter Product Name");
-    let deleteprice = Number(prompt("Enter Price"));
+            let deletecompany = prompt("Enter Company Name");
+            let deletemodel = prompt("Enter Product Name");
+            let deleteprice = Number(prompt("Enter Price"));
 
-    let data = JSON.parse(localStorage.getItem("addproductToList"));
+            let data = JSON.parse(localStorage.getItem("addproductToList"));
 
-    let newData = data.filter(function(item) {
-        return !(
-            item.company === deletecompany &&
-            item.model === deletemodel &&
-            item.price === deleteprice
-        );
-    });
+            let newData = data.filter(function (item) {
+                return !(
+                    item.company === deletecompany &&
+                    item.model === deletemodel &&
+                    item.price === deleteprice
+                );
+            });
 
-    localStorage.setItem("addproductToList", JSON.stringify(newData));
+            localStorage.setItem("addproductToList", JSON.stringify(newData));
 
-    location.reload();
-}
+            location.reload();
+        }
 
     }
 
@@ -497,7 +499,7 @@ document.querySelector(".add").onclick = function () {
 
 
     location.reload();
-    
+
 };
 
 getgata();
