@@ -345,30 +345,29 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
     document.querySelector('input').value = parameter;
     const filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
     if (parameter == "Price Low to High") {
-        for (const key in filterproduct) {
-            filterproduct[key].sort((a, b) => {
+       
+            filterproduct.sort((a, b) => {
                 return a.price - b.price;
             });
-        }
 
     }
     else if (parameter == "Price High to Low") {
-        for (const key in filterproduct) {
-            filterproduct[key].sort((a, b) => {
+        
+            filterproduct.sort((a, b) => {
                 return b.price - a.price;
             });
-        }
+      
 
     } else if (parameter == "") {
 
     }
     else {
-        for (const key in filterproduct) {
-            filterproduct[key] = filterproduct[key].filter((data) => {
+       
+            filterproduct = filterproduct.filter((data) => {
                 return data.company.toLowerCase().includes(parameter.toLowerCase());
 
             });
-        }
+        
     }
 
     const data = filterproduct;
