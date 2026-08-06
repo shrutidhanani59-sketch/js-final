@@ -343,7 +343,7 @@
 function getgata(parameter = localStorage.getItem('myparameter')) {
 
     document.querySelector('input').value = parameter;
-    const filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
+    let filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
     if (parameter == "Price Low to High") {
        
             filterproduct.sort((a, b) => {
