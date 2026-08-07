@@ -356,7 +356,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             return b.price - a.price;
         });
     }
-     else if (parameter == "") {
+    else if (parameter == "") {
 
     }
     else {
@@ -367,11 +367,11 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
     }
 
     const data = filterproduct;
+
     let section = document.createElement('section');
     let h2 = document.createElement('h2');
 
     let div = document.createElement('div');
-    console.log(JSON.parse(localStorage.getItem("addproductToList")));
 
     for (const element of data) {
 
@@ -410,6 +410,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
         main.appendChild(button2);
 
         div.appendChild(main);
+
 
         button1.onclick = function () {
 
@@ -461,11 +462,35 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
 
             location.reload();
         };
-
-
     }
 
+    document.querySelector('article').appendChild(div);
 
+};
+
+document.querySelector(".add").onclick = function () {
+
+    let company = prompt("Enter Company Name");
+    let model = prompt("Enter Product Name");
+    let price = Number(prompt("Enter Price"));
+    let image = prompt("Enter Image Path");
+
+    let newProduct = {
+        company: company,
+        model: model,
+        price: price,
+        img: image,
+        description: "New Product",
+        star: "⭐⭐⭐⭐"
+    };
+
+    let data = JSON.parse(localStorage.getItem("addproductToList"));
+    data[category].push(newProduct);
+    localStorage.setItem("addproductToList", JSON.stringify(data));
+    alert("Product Added Successfully ✅");
+
+    displayProducts(category);
+    location.reload();
 };
 
 getgata();
