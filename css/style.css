@@ -131,12 +131,7 @@ nav{
     padding: 10px;
 }
 
-/* Mobile */
 @media (max-width:576px){
-
-    div{
-        grid-template-columns:1fr;
-    }
 
     nav{
         width: 135vh;
