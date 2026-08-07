@@ -345,7 +345,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
     document.querySelector('input').value = parameter;
     let filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
     if (parameter == "Price Low to High") {
-<<<<<<< HEAD
+
 
         filterproduct.sort((a, b) => {
             return a.price - b.price;
@@ -358,7 +358,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             return b.price - a.price;
         });
 
-=======
+
        
             filterproduct.sort((a, b) => {
                 return a.price - b.price;
@@ -371,27 +371,27 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
                 return b.price - a.price;
             });
       
->>>>>>> bc0e334d4bd897deee9c75516c80ddf92056532a
+
 
     } else if (parameter == "") {
 
     }
     else {
-<<<<<<< HEAD
+
 
         filterproduct = filterproduct.filter((data) => {
             return data.company.toLowerCase().includes(parameter.toLowerCase());
 
         });
 
-=======
+
        
             filterproduct = filterproduct.filter((data) => {
                 return data.company.toLowerCase().includes(parameter.toLowerCase());
 
             });
         
->>>>>>> bc0e334d4bd897deee9c75516c80ddf92056532a
+
     }
 
     const data = filterproduct;
@@ -476,7 +476,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
 
             let data = JSON.parse(localStorage.getItem("addproductToList"));
 
-<<<<<<< HEAD
+
     data = data.filter(function(item) {
         return !(
             item.company === deletecompany &&
@@ -489,7 +489,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
 
     location.reload();
 };
-=======
+
             let newData = data.filter(function (item) {
                 return !(
                     item.company === deletecompany &&
@@ -503,16 +503,11 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             location.reload();
         }
 
->>>>>>> bc0e334d4bd897deee9c75516c80ddf92056532a
+
     }
 
     section.appendChild(div);
     document.querySelector("article").appendChild(section);
-
-
-}
-
-
 
 document.querySelector('input').onchange = function (e) {
     localStorage.setItem("myparameter", e.target.value);
