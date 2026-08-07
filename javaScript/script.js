@@ -345,6 +345,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
     document.querySelector('input').value = parameter;
     let filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
     if (parameter == "Price Low to High") {
+<<<<<<< HEAD
 
         filterproduct.sort((a, b) => {
             return a.price - b.price;
@@ -357,17 +358,40 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             return b.price - a.price;
         });
 
+=======
+       
+            filterproduct.sort((a, b) => {
+                return a.price - b.price;
+            });
+
+    }
+    else if (parameter == "Price High to Low") {
+        
+            filterproduct.sort((a, b) => {
+                return b.price - a.price;
+            });
+      
+>>>>>>> bc0e334d4bd897deee9c75516c80ddf92056532a
 
     } else if (parameter == "") {
 
     }
     else {
+<<<<<<< HEAD
 
         filterproduct = filterproduct.filter((data) => {
             return data.company.toLowerCase().includes(parameter.toLowerCase());
 
         });
 
+=======
+       
+            filterproduct = filterproduct.filter((data) => {
+                return data.company.toLowerCase().includes(parameter.toLowerCase());
+
+            });
+        
+>>>>>>> bc0e334d4bd897deee9c75516c80ddf92056532a
     }
 
     const data = filterproduct;
@@ -415,40 +439,44 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
 
         div.appendChild(main);
 
-       let index = data.indexOf(element);
+        button1.onclick = function () {
 
-button1.onclick = function () {
+            let allData = JSON.parse(localStorage.getItem("addproductToList"));
 
-    let allData = JSON.parse(localStorage.getItem("addproductToList"));
+            let updatecompany = prompt("Enter Company Name", element.company);
+            let updatemodel = prompt("Enter Product Name", element.model);
+            let updateprice = prompt("Enter Price", element.price);
+            let updateimage = prompt("Enter Image Path", element.img);
 
-    let updatecompany = prompt("Enter Company Name", element.company);
-    let updatemodel = prompt("Enter Product Name", element.model);
-    let updateprice = prompt("Enter Price", element.price);
-    let updateimage = prompt("Enter Image Path", element.img);
+            allData[category] = allData[category].map((item, i) => {
+                if (i === index) {
+                    return {
+                        company: updatecompany,
+                        model: updatemodel,
+                        price: Number(updateprice),
+                        img: updateimage,
+                        description: item.description,
+                        star: item.star
+                    };
+                }
+                return item;
+            });
 
-    allData[index] = {
-        company: updatecompany,
-        model: updatemodel,
-        price: Number(updateprice),
-        img: updateimage,
-        description: element.description,
-        star: element.star
-    };
+            localStorage.setItem("addproductToList", JSON.stringify(allData));
 
-    localStorage.setItem("addproductToList", JSON.stringify(allData));
-
-    location.reload();
-};
+            location.reload();
+        };
 
 
         button2.onclick = function () {
 
-    let deletecompany = prompt("Enter Company Name");
-    let deletemodel = prompt("Enter Product Name");
-    let deleteprice = Number(prompt("Enter Price"));
+            let deletecompany = prompt("Enter Company Name");
+            let deletemodel = prompt("Enter Product Name");
+            let deleteprice = Number(prompt("Enter Price"));
 
-    let data = JSON.parse(localStorage.getItem("addproductToList"));
+            let data = JSON.parse(localStorage.getItem("addproductToList"));
 
+<<<<<<< HEAD
     data = data.filter(function(item) {
         return !(
             item.company === deletecompany &&
@@ -461,6 +489,21 @@ button1.onclick = function () {
 
     location.reload();
 };
+=======
+            let newData = data.filter(function (item) {
+                return !(
+                    item.company === deletecompany &&
+                    item.model === deletemodel &&
+                    item.price === deleteprice
+                );
+            });
+
+            localStorage.setItem("addproductToList", JSON.stringify(newData));
+
+            location.reload();
+        }
+
+>>>>>>> bc0e334d4bd897deee9c75516c80ddf92056532a
     }
 
     section.appendChild(div);
