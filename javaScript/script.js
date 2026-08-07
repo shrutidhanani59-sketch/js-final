@@ -345,8 +345,6 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
     document.querySelector('input').value = parameter;
     let filterproduct = JSON.parse(localStorage.getItem("addproductToList"));
     if (parameter == "Price Low to High") {
-
-
         filterproduct.sort((a, b) => {
             return a.price - b.price;
         });
@@ -357,41 +355,15 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
         filterproduct.sort((a, b) => {
             return b.price - a.price;
         });
-
-
-       
-            filterproduct.sort((a, b) => {
-                return a.price - b.price;
-            });
-
     }
-    else if (parameter == "Price High to Low") {
-        
-            filterproduct.sort((a, b) => {
-                return b.price - a.price;
-            });
-      
-
-
-    } else if (parameter == "") {
+     else if (parameter == "") {
 
     }
     else {
-
-
         filterproduct = filterproduct.filter((data) => {
             return data.company.toLowerCase().includes(parameter.toLowerCase());
 
         });
-
-
-       
-            filterproduct = filterproduct.filter((data) => {
-                return data.company.toLowerCase().includes(parameter.toLowerCase());
-
-            });
-        
-
     }
 
     const data = filterproduct;
@@ -477,20 +449,7 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             let data = JSON.parse(localStorage.getItem("addproductToList"));
 
 
-    data = data.filter(function(item) {
-        return !(
-            item.company === deletecompany &&
-            item.model === deletemodel &&
-            item.price === deleteprice
-        );
-    });
-
-    localStorage.setItem("addproductToList", JSON.stringify(data));
-
-    location.reload();
-};
-
-            let newData = data.filter(function (item) {
+            data = data.filter(function (item) {
                 return !(
                     item.company === deletecompany &&
                     item.model === deletemodel &&
@@ -498,41 +457,14 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
                 );
             });
 
-            localStorage.setItem("addproductToList", JSON.stringify(newData));
+            localStorage.setItem("addproductToList", JSON.stringify(data));
 
             location.reload();
-        }
+        };
 
 
     }
 
-    section.appendChild(div);
-    document.querySelector("article").appendChild(section);
-
-document.querySelector('input').onchange = function (e) {
-    localStorage.setItem("myparameter", e.target.value);
-    location.reload();
-}
-
-
-document.querySelector(".add").onclick = function () {
-
-    let company = prompt("Enter Company Name");
-    let model = prompt("Enter Product Name");
-    let price = prompt("Enter Price");
-    let image = prompt("Enter Image Path");
-
-    let newdata = {
-        company: company, model: model, price: price, img: image, description: "New Product", star: "⭐⭐⭐⭐"
-    };
-
-    let data = JSON.parse(localStorage.getItem("addproductToList"));
-    data.push(newdata);
-    console.log(data);
-    localStorage.setItem("addproductToList", JSON.stringify(data));
-
-
-    location.reload();
 
 };
 
