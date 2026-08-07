@@ -421,8 +421,8 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
             let updateprice = prompt("Enter Price", element.price);
             let updateimage = prompt("Enter Image Path", element.img);
 
-            allData[category] = allData[category].map((item, i) => {
-                if (i === index) {
+            allData = allData.map((item) => {
+                if (item.company === element.company) {
                     return {
                         company: updatecompany,
                         model: updatemodel,
@@ -485,11 +485,11 @@ document.querySelector(".add").onclick = function () {
     };
 
     let data = JSON.parse(localStorage.getItem("addproductToList"));
-    data[category].push(newProduct);
+    data.push(newProduct);
     localStorage.setItem("addproductToList", JSON.stringify(data));
     alert("Product Added Successfully ✅");
 
-    displayProducts(category);
+    // displayProducts(category);
     location.reload();
 };
 
