@@ -441,28 +441,18 @@ function getgata(parameter = localStorage.getItem('myparameter')) {
         };
 
 
-        button2.onclick = function () {
+  button2.onclick = function () {
 
-            let deletecompany = prompt("Enter Company Name");
-            let deletemodel = prompt("Enter Product Name");
-            let deleteprice = Number(prompt("Enter Price"));
+    let allData = JSON.parse(localStorage.getItem("addproductToList"));
 
-            let data = JSON.parse(localStorage.getItem("addproductToList"));
+    allData = allData.filter(function (item) {
+        return item.company != element.company;
+    });
 
+    localStorage.setItem("addproductToList", JSON.stringify(allData));
 
-            data = data.filter(function (item) {
-                return !(
-                    item.company === deletecompany &&
-                    item.model === deletemodel &&
-                    item.price === deleteprice
-                );
-            });
-
-            localStorage.setItem("addproductToList", JSON.stringify(data));
-
-            location.reload();
-        };
-    }
+    location.reload();
+};
 
     document.querySelector('article').appendChild(div);
 
@@ -492,5 +482,6 @@ document.querySelector(".add").onclick = function () {
     // displayProducts(category);
     location.reload();
 };
+}
 
 getgata();
